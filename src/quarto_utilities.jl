@@ -43,23 +43,27 @@ end
 export mdfigure
 
 """
-        mddf(df, cap, filename, path; tag = nothing)
+        mddf(df, cap, filename, path; tag = nothing, truncate = 32)
 
 Convert DataFrame to MarkDown and save as a .txt file with caption (`cap`) and properties (`tags`).
 """
-function mddf(df, cap, filename, path; tag = nothing)
+function mddf(
+    df, cap, filename, path;
+    tag = nothing, truncate = 32
+)
 
     if isnothing(tag)
         tag = filename
     end
 
-    a = " {" * tag * "}"
+    a = " {#tbl-" * tag * "}"
     open(path * filename * ".txt", "w") do file
         show(
             file, df;
             summary = false,
             eltypes = false,
             vlines = :all,
+            truncate = truncate,
             tf = PrettyTables.tf_markdown
         )
         write(file, "\n \n")
