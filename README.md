@@ -4,4 +4,4 @@ After a particularly painful period of trial-and-error, I have come to prefer an
 
 Consequently, I write my code, generate my tables and figures (in what I can only assume is) old-fashioned way. I then load these into my `.qmd` document using `{{< include ... >}}` statements.
 
-Here is a collection of functions that assist in producing figures (with [Makie.jl](https://docs.makie.org/stable/) in mind) and tables (using [PrettyTables.jl](https://ronisbr.github.io/PrettyTables.jl/stable/) and [TexTables](https://jacobadenbaum.github.io/TexTables.jl/stable/)) with captions and tags that render to Markdown.
+Here is a collection of functions that assist in producing figures (with [Makie.jl](https://docs.makie.org/stable/) in mind) and tables (using [PrettyTables.jl](https://ronisbr.github.io/PrettyTables.jl/stable/) and [TexTables.jl](https://jacobadenbaum.github.io/TexTables.jl/stable/)) with captions and tags that render to Markdown.
