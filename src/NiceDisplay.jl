@@ -7,6 +7,7 @@ module NiceDisplay
     using CategoricalArrays
     @reexport using TexTables, PrettyTables
     @reexport using CairoMakie, ColorSchemes, Colors
+    @reexport using AlgebraOfGraphics
     
     for x in [
         "plot_utilities.jl", "quarto_utilities.jl",
