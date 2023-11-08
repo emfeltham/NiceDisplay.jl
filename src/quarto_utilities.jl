@@ -43,13 +43,18 @@ end
 export mdfigure
 
 """
-        mddf(df, cap, filename, path; tag = nothing, truncate = 32)
+        savemddf(
+            directory, filename, caption, df;
+            tag = nothing, truncate = 32,
+            vlines = :all, tf = PrettyTables.tf_markdown
+        )
 
-Convert DataFrame to MarkDown and save as a .txt file with caption (`cap`) and properties (`tags`).
+Convert DataFrame to MarkDown and save as a .txt file with caption (`caption`) and properties (`tag`).
 """
-function mddf(
-    df, cap, filename, path;
-    tag = nothing, truncate = 32
+function savemddf(
+    directory, filename, caption, df;
+    tag = nothing, truncate = 32,
+    vlines = :all, tf = PrettyTables.tf_markdown
 )
 
     if isnothing(tag)
@@ -57,18 +62,18 @@ function mddf(
     end
 
     a = " {#tbl-" * tag * "}"
-    open(path * filename * ".txt", "w") do file
+    open(directory * filename * ".txt", "w") do file
         show(
             file, df;
             summary = false,
             eltypes = false,
-            vlines = :all,
+            vlines = vlines,
             truncate = truncate,
-            tf = PrettyTables.tf_markdown
+            tf = tf
         )
         write(file, "\n \n")
-        write(file, ": " * cap * a)
+        write(file, ": " * caption * a)
     end
 end
 
-export mddf
+export savemddf
