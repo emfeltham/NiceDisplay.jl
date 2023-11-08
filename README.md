@@ -9,19 +9,38 @@ Here is a collection of functions that assist in producing figures (with [Makie.
 Produce and export a figure:
 
 ```julia
+using CairoMakie, NiceDisplay
+
 fg, ax, pl = scatter(x, y)
 
 # default figure tag is the filename without suffix, e.g., {#fig-[filename]}
 projectpath = "myrepo/"
 dir = "figures/"
 filename = "myfig"
-caption = "Many things are illustrated in panels A-Z."
+caption = "In panels A-Z, we can clearly see that this figure has too many panels."
+
+# this saves the figure itself, and also a document, here "myfig_cap.txt" that includes the MarkDown text that loads the figure and also contains the caption and tag.
 savemdfigure(
     projectpath, dir, filename, caption, fg;
     figuretag = nothing, type = ".svg"
 );
 ```
 
+"myfig_cap.txt":
+
+```markdown
+!["In panels A-Z, we can clearly see that this figure has too many panels."](myrepo/figures.svg){#fig-myfig}
+```
+
+The figure is incorporated into the working document as follows:
+
+```markdown
+This is the usual sort of text that fills a document. In particular, relevant to this context, it purports to describe @fig-myfig.
+
+{{< include figures/myfig_cap.text >}}
+
+More text follows.
+```
 
 
 [^rdme-1]: Apparently, there are [dozens of us](https://youtu.be/7jiPeIFXb6U?si=36nUdKpSboGvPG3U) who feel this way.
