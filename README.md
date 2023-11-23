@@ -44,4 +44,8 @@ More text follows.
 
 The working document should be in "myrepo", so that the relative paths refer correctly.
 
+## Difficulties
+
+- Figure/Table labels/captions generated directly in LaTeX (e.g., a nicely formatted regression table outputted from "stargazer" in R) or HTML (e.g., insert an html codeblock for an interactive figure). Currently they appear when inserted, but it is not clear how to add numbers, captions, or tags.
+
 [^rdme-1]: Apparently, there are [dozens of us](https://youtu.be/7jiPeIFXb6U?si=36nUdKpSboGvPG3U) who feel this way.

@@ -54,14 +54,22 @@ Convert DataFrame to MarkDown and save as a .txt file with caption (`caption`) a
 function savemddf(
     directory, filename, caption, df;
     tag = nothing, truncate = 32,
-    vlines = :all, tf = PrettyTables.tf_markdown
+    vlines = :all,
+    opts = nothing,
+    tf = PrettyTables.tf_markdown
 )
 
     if isnothing(tag)
         tag = filename
     end
 
-    a = " {#tbl-" * tag * "}"
+    opts = if isnothing(opts)
+        ""
+    else
+        " " * opts
+    end
+
+    a = " {#tbl-" * tag * opts * "}"
     open(directory * filename * ".txt", "w") do file
         show(
             file, df;
