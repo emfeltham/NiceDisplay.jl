@@ -3,6 +3,12 @@
 # functions to set common plotting parameters
 # try to limit this to prevent lots of confusing plot functions
 
+function yxline!(ax)
+    lines!(ax, 0:.01:1, 0:.01:1, color = :black, linestyle = :dot)
+end
+
+export yxline!
+
 function linehist!(ax, x; bins = nothing, color = nothing, fx = mean)
     if isnothing(bins)
         hist!(ax, x)
@@ -25,6 +31,15 @@ fext = ".svg"
 
 export fext, wong, wc, berlin
 
+"""
+        labelpanels!(los; lbs = nothing)
+
+## Description
+
+Add labels to GridLayouts in `los`. Add custom labels as `lbs`, defaults to
+alphabetical enumeration.
+
+"""
 function labelpanels!(los; lbs = nothing)
     lbs = if isnothing(lbs)
         string.(collect('A':'Z'))[1:length(los)]

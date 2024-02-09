@@ -5,13 +5,18 @@ module NiceDisplay
     using MixedModels, Distributions, GLM, StatsModels
     using DataFrames, DataFramesMeta
     using CategoricalArrays
+    using Graphs, MetaGraphs
+    using LinearAlgebra
+
     @reexport using TexTables, PrettyTables
-    @reexport using CairoMakie, ColorSchemes, Colors
-    @reexport using AlgebraOfGraphics
+    @reexport using CairoMakie, AlgebraOfGraphics
+    @reexport using ColorSchemes, Colors
+    @reexport using GraphMakie
     
     for x in [
         "plot_utilities.jl", "quarto_utilities.jl",
-        "regtables.jl", "nicedisplay.jl", "unitbarplot.jl"
+        "regtables.jl", "nicedisplay.jl",
+        "typst.jl"
     ]
         include(x)
     end

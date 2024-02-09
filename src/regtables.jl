@@ -59,14 +59,14 @@ export MMColumn
 
 function GLMColumn(
     header, m::T;
-    stats = (:N => Int∘nobs, "BIC" => bic),
+    stats = (:N => Int∘nobs, :BIC => bic),
     meta = (),
     stderror::Function=stderror, kwargs...
 ) where T <: RegressionModel
 
     # Compute p-values
     pval(m) = ccdf.(FDist(1, dof_residual(m)),
-                    abs2.(coef(m)./stderror(m)))
+        abs2.(coef(m)./stderror(m)))
 
     #pval(m) = m.pvalues
 
@@ -431,7 +431,10 @@ end
 
 export pretty_reg
 
-function joinregs(ms; cnames = nothing)
+function joinregs(
+    ms, stats;
+    cnames = nothing,
+)
     regs = Any[]
 
     nm = if isnothing(cnames)
@@ -446,9 +449,9 @@ function joinregs(ms; cnames = nothing)
     for (i, m) in enumerate(ms)
         ttl = nm[i]
         vs = if typeof(m) <: MixedModel
-            MMColumn(ttl, m)
+            MMColumn(ttl, m; stats)
         else
-            GLMColumn(ttl, m)
+            GLMColumn(ttl, m; stats)
         end
         push!(regs, vs)
     end
@@ -461,8 +464,12 @@ function processregs(m)
     return IndexedTable(MMColumn("", m))
 end
 
-function processregs(ms::T; cnames = nothing) where T <: Vector
-    return joinregs(ms; cnames = cnames)
+function processregs(
+    ms::T;
+    cnames = nothing,
+    stats = (:N => Int∘nobs, "BIC" => bic, )
+) where T <: Vector
+    return joinregs(ms, stats; cnames = cnames)
 end
 
 export processregs

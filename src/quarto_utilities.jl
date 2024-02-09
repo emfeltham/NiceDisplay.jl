@@ -12,7 +12,7 @@ Tag is prefixed for a figure ('#fig-').
 """
 function savemdfigure(
     projectpath, dir, filename, caption, figure;
-    tag = nothing, type = ".svg"
+    tag = nothing, type = ".svg", widthpct = 100
 )
 
     if isnothing(tag)
@@ -22,7 +22,7 @@ function savemdfigure(
     saveloc = projectpath * dir * filename
     save(saveloc * type, figure)
     figloc = dir * filename * type
-    mdfigure(saveloc, figloc, "#fig-" * tag, caption)
+    mdfigure(saveloc, figloc, "width='" * string(widthpct) * "%'" * " " * "#fig-" * tag, caption)
 end
 
 export savemdfigure
