@@ -35,14 +35,14 @@ end
 export niceout
 
 """
-        nicedisplay(
+        nd(
             v::Vector; crop = :none, rows = nothing;
             colnum = 7, tf = nothing
         )
 Display a vector in a multicolumn format.
 """
 
-function nicedisplay(
+function nd(
     v::Vector; crop = :none, rows = nothing,
     colnum = 6, tf = nothing
 )
@@ -75,8 +75,8 @@ function nicedisplay(
     )
 end
 
-function nicedisplay(df::DataFrame; crop = :none, rows = nothing, colnum = 6, tf = nothing)
-    return nicedisplay(names(df), crop = crop, rows = rows, colnum = colnum, tf = tf)
+function nd(df::DataFrame; crop = :none, rows = nothing, colnum = 6, tf = nothing)
+    return nd(names(df), crop = crop, rows = rows, colnum = colnum, tf = tf)
 end
 
-export nicedisplay
+export nd

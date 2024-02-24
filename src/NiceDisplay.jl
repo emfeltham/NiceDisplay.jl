@@ -15,16 +15,9 @@ module NiceDisplay
     
     for x in [
         "plot_utilities.jl", "quarto_utilities.jl",
-        "regtables.jl", "nicedisplay.jl",
-        "typst.jl"
+        "regtables.jl", "nicedisplay.jl"
     ]
         include(x)
     end
 
-    # for x in ["roc-style.jl"]
-    #     include("figures/" * x)
-    # end
-
-    nd = nicedisplay;
-    export nd
 end

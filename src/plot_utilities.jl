@@ -25,11 +25,11 @@ end
 # include("new analysis cleaning.jl");
 
 # colors
-wong = wc = Makie.wong_colors();
+oi = wc = Makie.wong_colors(); # Okabe-Ito colors
 berlin = colorschemes[:berlin];
 fext = ".svg"
 
-export fext, wong, wc, berlin
+export fext, wc, oi, berlin
 
 """
         labelpanels!(los; lbs = nothing)
