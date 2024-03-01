@@ -1,7 +1,12 @@
 # plot_utilities.jl
 
+# colors
+oi = wc = Makie.wong_colors(); # Okabe-Ito colors
+berlin = colorschemes[:berlin];
+
+export wc, oi, berlin
+
 # functions to set common plotting parameters
-# try to limit this to prevent lots of confusing plot functions
 
 function yxline!(ax)
     lines!(ax, 0:.01:1, 0:.01:1, color = :black, linestyle = :dot)
@@ -21,15 +26,6 @@ function linehist!(ax, x; bins = nothing, color = nothing, fx = mean)
         vlines!(ax, fx(x); color = color)
     end
 end
-
-# include("new analysis cleaning.jl");
-
-# colors
-oi = wc = Makie.wong_colors(); # Okabe-Ito colors
-berlin = colorschemes[:berlin];
-fext = ".svg"
-
-export fext, wc, oi, berlin
 
 """
         labelpanels!(los; lbs = nothing)
@@ -57,19 +53,6 @@ end
 
 export labelpanels!
 
-## perceiver plot utilities
-
-function node_properties(g, v; c = "#00356b")
-    node_color = fill(RGBA(0,0,0), nv(g))
-    node_color[v] = parse(Colorant, c)
-    node_size = fill(12, nv(g))
-    node_size[v] = 36
-    return node_color, node_size
-end
-
-export node_properties
-
-# lblue is orbitcolor
 yale = (
     lblue = parse(Colorant, "#63aaff"),
     blue = parse(Colorant, "#00356b"),
