@@ -1,10 +1,20 @@
 # plot_utilities.jl
-
 # colors
-oi = wc = Makie.wong_colors(); # Okabe-Ito colors
-berlin = colorschemes[:berlin];
+
+global oi = wc = Makie.wong_colors(); # Okabe-Ito colors
+global berlin = colorschemes[:berlin];
 
 export wc, oi, berlin
+
+global yale = (
+    lblue = parse(Colorant, "#63aaff"),
+    blue = parse(Colorant, "#00356b"),
+    ora = parse(Colorant, "#bd5319"),
+    dgrey = parse(Colorant, "#4a4a4a"),
+    mgrey = parse(Colorant, "#978d85")
+);
+
+export yale
 
 # functions to set common plotting parameters
 
@@ -28,18 +38,23 @@ function linehist!(ax, x; bins = nothing, color = nothing, fx = mean)
 end
 
 """
-        labelpanels!(los; lbs = nothing)
+        labelpanels!(los; lbs = :lowercase)
 
 ## Description
 
 Add labels to GridLayouts in `los`. Add custom labels as `lbs`, defaults to
 alphabetical enumeration.
 
+- `lbs`: one of `:lowercase`, `:uppercase`, or a vector of labels at least as long as `los` vector of layouts.
+
 """
-function labelpanels!(los; lbs = nothing)
-    lbs = if isnothing(lbs)
+function labelpanels!(los; lbs = :lowercase)
+    lbs = if lbs == :uppercase
         string.(collect('A':'Z'))[1:length(los)]
+    elseif lbs == :lowercase
+        string.(collect('a':'z'))[1:length(los)]
     else
+        @assert length(los) <= length(lbs)
         lbs
     end
     for (label, layout) in zip(lbs, los)
@@ -52,13 +67,3 @@ function labelpanels!(los; lbs = nothing)
 end
 
 export labelpanels!
-
-yale = (
-    lblue = parse(Colorant, "#63aaff"),
-    blue = parse(Colorant, "#00356b"),
-    ora = parse(Colorant, "#bd5319"),
-    dgrey = parse(Colorant, "#4a4a4a"),
-    mgrey = parse(Colorant, "#978d85")
-);
-
-export yale

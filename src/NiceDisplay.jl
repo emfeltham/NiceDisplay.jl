@@ -2,11 +2,11 @@ module NiceDisplay
 
     using Reexport
 
-    using MixedModels, Distributions, GLM, StatsModels
     using DataFrames, DataFramesMeta
     using CategoricalArrays
     using Graphs, MetaGraphs
     using LinearAlgebra
+    using PrettyTables # for nicedisplay()
 
     # @reexport using TexTables, using PrettyTables
     @reexport using CairoMakie, AlgebraOfGraphics
