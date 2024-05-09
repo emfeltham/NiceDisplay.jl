@@ -17,7 +17,7 @@ module NiceDisplay
         "plot_utilities.jl",
         "graphplot_utilities.jl",
         "niceout.jl"
-    ]
+        ]
         include(x)
     end
 end
