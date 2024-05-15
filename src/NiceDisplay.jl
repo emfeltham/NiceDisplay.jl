@@ -18,7 +18,7 @@ module NiceDisplay
         "graphplot_utilities.jl",
         # "quarto_utilities.jl",
         # "regtables.jl",
-        "nicedisplay.jl"
+        "niceout.jl"
     ]
         include(x)
     end
