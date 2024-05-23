@@ -9,7 +9,7 @@ module NiceDisplay
     using PrettyTables # for nicedisplay()
 
     # @reexport using TexTables, using PrettyTables
-    @reexport using CairoMakie, AlgebraOfGraphics
+    @reexport using CairoMakie
     @reexport using ColorSchemes, Colors
     @reexport using GraphMakie
     
@@ -18,7 +18,8 @@ module NiceDisplay
         "graphplot_utilities.jl",
         # "quarto_utilities.jl",
         # "regtables.jl",
-        "niceout.jl"
+        "niceout.jl",
+        "colors.jl"
     ]
         include(x)
     end
