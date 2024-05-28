@@ -45,7 +45,13 @@ export yale
 
 # https://visualidentity.columbia.edu/branding#:~:text=To%20remain%20compliant%20with%20WCAG,components%20and%20large%20text%20only.
 global columbia = (
-    blue = [parse(Colorant, "#b9d9eb"), parse(Colorant, "#1d4f91")],
+    blues = [
+        parse(Colorant, "#b9d9eb"),
+        parse(Colorant, "#69b3e7"),
+        parse(Colorant, "#6cace4"),
+        parse(Colorant, "#0072ce"),
+        parse(Colorant, "#1d4f91")
+    ],
     secondary = [
         parse(Colorant, "#ffc72c"), parse(Colorant, "#ff9e1b"),
         parse(Colorant, "#615e9b"), parse(Colorant, "#44693d"),
