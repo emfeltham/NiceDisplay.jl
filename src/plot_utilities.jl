@@ -22,17 +22,31 @@ function linehist!(ax, x; bins = nothing, color = nothing, fx = mean)
 end
 
 """
-        labelpanels!(los; lbs = :lowercase)
+        labelpanels!(
+            los; lbs = :lowercase,
+            fontsize = 26,
+            font = :bold,
+            padding = (0, 5, 5, 0),
+            halign = :right,
+            labelposition = TopLeft()
+        )
 
 ## Description
 
 Add labels to GridLayouts in `los`. Add custom labels as `lbs`, defaults to
 alphabetical enumeration.
 
-- `lbs`: one of `:lowercase`, `:uppercase`, or a vector of labels at least as long as `los` vector of layouts.
+- `lbs`: one of `:lowercase`, `:uppercase`, or a vector of custom labels at least as long as `los` vector of layouts.
 
 """
-function labelpanels!(los; lbs = :lowercase)
+function labelpanels!(
+    los; lbs = :lowercase,
+    fontsize = 26,
+    font = :bold,
+    padding = (0, 5, 5, 0),
+    halign = :right,
+    labelposition = TopLeft()
+)
     lbs = if lbs == :uppercase
         string.(collect('A':'Z'))[1:length(los)]
     elseif lbs == :lowercase
@@ -42,11 +56,14 @@ function labelpanels!(los; lbs = :lowercase)
         lbs
     end
     for (label, layout) in zip(lbs, los)
-        Label(layout[1, 1, TopLeft()], label,
-            fontsize = 26,
-            font = :bold,
-            padding = (0, 5, 5, 0),
-            halign = :right)
+        Label(
+            layout[1, 1, labelposition],
+            label;
+            fontsize,
+            font,
+            padding,
+            halign
+        )
     end
 end
 
