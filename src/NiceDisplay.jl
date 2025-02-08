@@ -1,24 +1,14 @@
 module NiceDisplay
-
-    using Reexport
-
-    using DataFrames, DataFramesMeta
-    using CategoricalArrays
-    using Graphs, MetaGraphs
-    using LinearAlgebra
+    
+    using Colors
+    using DataFrames
+    # using LinearAlgebra
     using PrettyTables # for nicedisplay()
-
-    # @reexport using TexTables, using PrettyTables
-    @reexport using CairoMakie
-    @reexport using ColorSchemes, Colors
-    @reexport using GraphMakie
     
     for x in [
-        "plot_utilities.jl",
-        "graphplot_utilities.jl",
-        # "quarto_utilities.jl",
-        # "regtables.jl",
-        "niceout.jl",
+        "plot utilities.jl",
+        "graphplot utilities.jl",
+        "nice out.jl",
         "colors.jl"
     ]
         include(x)

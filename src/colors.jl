@@ -1,9 +1,8 @@
 # colors.jl
 
-global oi = wc = Makie.wong_colors(); # Okabe-Ito colors
-global berlin = colorschemes[:berlin];
-
-export wc, oi, berlin
+# global oi = wc = Makie.wong_colors(); # Okabe-Ito colors
+# global berlin = colorschemes[:berlin];
+# export wc, oi, berlin
 
 # https://www.umass.edu/university-relations/brand/brand-elements
 global umass = (
