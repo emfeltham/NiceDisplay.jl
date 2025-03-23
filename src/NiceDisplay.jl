@@ -7,6 +7,7 @@ module NiceDisplay
     using PrettyTables # for nicedisplay()
     
     @reexport using Colors
+    @reexport using ColorSchemes
     @reexport using CairoMakie
     
     for x in [
