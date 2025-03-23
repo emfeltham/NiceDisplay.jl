@@ -1,9 +1,13 @@
 module NiceDisplay
     
-    using Colors
+    using Reexport
+    
     using DataFrames
-    # using LinearAlgebra
+    using LinearAlgebra
     using PrettyTables # for nicedisplay()
+    
+    @reexport using Colors
+    @reexport using CairoMakie
     
     for x in [
         "plot utilities.jl",
